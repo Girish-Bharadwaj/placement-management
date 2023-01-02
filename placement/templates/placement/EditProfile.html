@@ -1,0 +1,106 @@
+{% extends 'placement/base.html' %} {% block content %}
+<div class="p-3">
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <h3>Edit Your Profile</h3>
+    <a href="{% url 'profile' %}" class="nav-link">
+      <button class="btn btn-primary px-3" style="height: 40px">
+        Go back to Profile
+      </button>
+    </a>
+  </div>
+  <div style="display: flex; justify-content: space-between">
+    <div class="card mr-2 mb-2" style="width: 30rem; height: fit-content">
+      <div class="card-body">
+        <h5 class="card-title">Personal Details</h5>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputPhone">Phone No</label>
+            <input
+              type="number"
+              class="form-control"
+              id="exampleInputPhone"
+              aria-describedby="phoneHelp"
+              placeholder="Enter Phone No"
+            />
+          </div>
+          <div class="form-group mb-2">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+          </div>
+          <div class="form-group mb-2">
+            <label for="exampleInputDOB">Date of Birth</label>
+            <input
+              type="date"
+              class="form-control"
+              id="exampleInputDOB"
+              aria-describedby="DOBHelp"
+              placeholder="Enter DOB"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="card mr-2 mb-2" style="width: 30rem">
+      <div class="card-body">
+        <h5 class="card-title">Other Details</h5>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputFName">Father's Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputFname"
+              aria-describedby="fnameHelp"
+              placeholder="Enter Father's Name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFName">Mother's Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputMname"
+              aria-describedby="mnameHelp"
+              placeholder="Enter Mother's Name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPPhone">Parent's Phone No</label>
+            <input
+              type="number"
+              class="form-control"
+              id="exampleInputPPhone"
+              aria-describedby="pphoneHelp"
+              placeholder="Enter Parent's Phone No"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Permenant-address">Permenant Address</label>
+            <textarea
+              class="form-control"
+              id="Permenant-address"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="current-address">Current Address</label>
+            <textarea
+              class="form-control"
+              id="current-address"
+              rows="3"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -26,3 +26,6 @@ def Dashboard(request):
 
 def RegisterDeregister(request):
     return render(request, 'placement/Register-Deregister.html')
+
+def EditProfile(request):
+    return render(request, 'placement/EditProfile.html')

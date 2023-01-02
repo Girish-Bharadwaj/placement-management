@@ -8,4 +8,5 @@ urlpatterns = [
     path('registeredcompanies/', views.RegisteredCompanies, name='registeredcompanies'),
     path('profile/', views.Profile, name='profile'),
     path('register/', views.RegisterDeregister, name='register-deregister'),
+    path('edit-profile/', views.EditProfile, name='edit-profile'),
 ]
