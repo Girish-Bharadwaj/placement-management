@@ -81,10 +81,10 @@
             </li>
             <li class="nav-item">
               <a class="nav-link
-              {% if request.resolver_match.url_name == 'register' %} 
+              {% if request.resolver_match.url_name == 'register-deregister' %} 
               selected
               {% endif %}" 
-              href="{% url 'register-deregister' %}">REGISTER/DEGISTER</a>
+              href="{% url 'register-deregister' %}">REGISTER/DEREGISTER</a>
             </li>
             <li class="nav-item 
             {% if request.resolver_match.url_name == 'profile' %} 
