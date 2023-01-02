@@ -59,16 +59,42 @@
         <div class="col-2 bg-body-secondary sidebar">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link {% if request.resolver_match.url_name == '/allcompanies' %}class='selected'{% endif %}" href="{% url 'allcompanies' %}">All Companies</a>
+            <a class="nav-link 
+            {% if request.resolver_match.url_name == 'dashboard' %} 
+            selected
+            {% endif %}" 
+            href="{% url 'dashboard' %}">DASHBOARD</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'registeredcompanies' %}">Registered Companies</a>
+              <a class="nav-link 
+              {% if request.resolver_match.url_name == 'allcompanies' %} 
+              selected
+              {% endif %}" 
+              href="{% url 'allcompanies' %}">ALL COMPANIES</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+              <a class="nav-link
+              {% if request.resolver_match.url_name == 'registeredcompanies' %} 
+              selected
+              {% endif %}" 
+              href="{% url 'registeredcompanies' %}">REGISTERED COMPANIES</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
+              <a class="nav-link
+              {% if request.resolver_match.url_name == 'register' %} 
+              selected
+              {% endif %}" 
+              href="{% url 'register-deregister' %}">REGISTER/DEGISTER</a>
+            </li>
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'profile' %} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'profile' %}">PROFILE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">LOGOUT</a>
             </li>
           </ul>
         </div>

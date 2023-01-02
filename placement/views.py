@@ -20,3 +20,9 @@ def AllCompanies(request):
 
 def RegisteredCompanies(request):
     return render(request, 'placement/RegisteredCompanies.html')
+
+def Dashboard(request):
+    return render(request, 'placement/Dashboard.html')
+
+def RegisterDeregister(request):
+    return render(request, 'placement/Register-Deregister.html')
