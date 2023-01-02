@@ -1,3 +1,53 @@
 {% extends 'placement/base.html' %} {% block content %}
-<h1>Register/deregister</h1>
+<div class="p-3">
+  <h3 class="pb-3">Manage Registrations to Companies</h3>
+  <div style="display: flex">
+    <div class="card m-2" style="width: 30rem">
+      <div class="card-body">
+        <h5 class="card-title">Register to Attend</h5>
+        <h6 class="card-subtitle mt-4 mb-2 text-muted">Select Company</h6>
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-secondary dropdown-toggle mt-1 mb-4"
+            type="button"
+            style="width: 100%; text-align: left"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Select Company from the list
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-primary">Register</button>
+      </div>
+    </div>
+    <div class="card m-2" style="width: 30rem">
+      <div class="card-body">
+        <h5 class="card-title">De-Register</h5>
+        <h6 class="card-subtitle mt-4 mb-2 text-muted">Select Company</h6>
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-secondary dropdown-toggle mt-1 mb-4"
+            type="button"
+            style="width: 100%; text-align: left"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Select Company from the list
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <button class="btn btn-danger">De-Register</button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}
