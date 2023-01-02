@@ -1,0 +1,29 @@
+.sidebar {
+  width: 23%;
+  height: 91vh;
+  position: fixed;
+  padding: 0px;
+}
+.sidebar a {
+  padding: 16px;
+  text-decoration: none;
+  color: black;
+  margin: 10px;
+  border-radius: 10px;
+}
+.sidebar a:hover {
+  background-color: rgb(17, 47, 61) !important;
+  color: white;
+}
+.sidebar a:focus {
+  outline: none !important;
+  text-decoration: none;
+}
+.selected {
+  background-color: rgb(17, 47, 61) !important;
+  color: white !important;
+}
+.main-page {
+  margin-left: 23%;
+  width: 77%;
+}
