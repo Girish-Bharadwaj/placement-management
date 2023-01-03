@@ -87,7 +87,7 @@
               href="{% url 'register-deregister' %}">REGISTER/DEREGISTER</a>
             </li>
             <li class="nav-item 
-            {% if request.resolver_match.url_name == 'profile' %} 
+            {% if request.resolver_match.url_name == 'profile' or request.resolver_match.url_name == 'edit-profile'%} 
               selected
             {% endif %}
             ">
