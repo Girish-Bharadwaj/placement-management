@@ -12,6 +12,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{% static 'placement/main.css' %}" />
+    {% block link %}
+    {% endblock %}
   </head>
   <body>
     <nav
@@ -30,21 +32,21 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="profile-logout" id="navbarSupportedContent">
           <ul
             class="navbar-nav me-auto mb-lg d-flex justify-content-end align-items-center"
             style="width: 100%"
           >
             <li class="nav-item">
-              <a href="/profile" class="nav-link">
+              <a href="{% url 'profile' %}" class="nav-link">
                 <button class="btn btn-outline-success" type="submit">
                   Profile
                 </button>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
-              <button class="btn btn-outline-danger" type="submit">
+              <a class="nav-link" href="{% url 'logout' %}">
+              <button class="btn btn-outline-danger">
                 Logout
               </button>
               </a>
@@ -99,10 +101,21 @@
           </ul>
         </div>
         <div class="main-page col-10">
+          <div class="row">
+            {% if messages %}
+            <div class="col-12">
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} mt-2" role="alert">
+                {{ message }}
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
           <div class="container-fluid">
               <div style="width: 100%;">
                 {% block content %} {% endblock %}
               </div>
+          </div>
           </div>
         </div>
       </div>
