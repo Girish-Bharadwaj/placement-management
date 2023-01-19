@@ -1,38 +1,40 @@
 {% extends 'placement/base.html' %} {% block content %}
 <h1>All Companies</h1>
 <table>
-    <thead>
-      <tr>
-        <th>Sl. No</th>
-        <th>Company</th>
-        <th>Category</th>
-        <th>CTC (LPA)</th>
-        <th>Stipend</th>
-        <th>Branches</th>
-        <th>BTech Criteria</th>
-        <th>Sem Criteria</th>
-        <th>Profile</th>
-        <th>Job Location</th>
-        <th>Date of Drive</th>
-        <th>Last Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Microsoft</td>
-        <td>IT</td>
-        <td>12.5</td>
-        <td>8,000</td>
-        <td>CSE, IT, ECE</td>
-        <td>7.5</td>
-        <td>6th</td>
-        <td>Software Engineer</td>
-        <td>Hyderabad</td>
-        <td>January 15th, 2023</td>
-        <td>January 10th, 2023</td>
-      </tr>
-      <tr>
+  <thead>
+    <tr>
+      <th>Sl. No</th>
+      <th>Company</th>
+      <th>Category</th>
+      <th>CTC (LPA)</th>
+      <th>Stipend</th>
+      <th>Branches</th>
+      <th>BTech Criteria</th>
+      <th>Sem Criteria</th>
+      <th>Profile</th>
+      <th>Job Location</th>
+      <th>Date of Drive</th>
+      <th>Last Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for company in companies %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ company.name }}</td>
+      <td>{{ company.category }}</td>
+      <td>{{ company.ctc }}</td>
+      <td>{{ company.stipend }}</td>
+      <td>{{ company.branches }}</td>
+      <td>{{ company.btech }}</td>
+      <td>{{ company.sem }}</td>
+      <td>{{ company.profile }}</td>
+      <td>{{ company.location }}</td>
+      <td>{{ company.date }}</td>
+      <td>{{ company.lastdate }}</td>
+    </tr>
+    {% endfor %}
+    <!-- <tr>
         <td>2</td>
         <td>Google</td>
         <td>IT</td>
@@ -115,27 +117,27 @@
         <td>Bangalore</td>
         <td>January 20th, 2023</td>
         <td>January 15th, 2023</td>
-      </tr>
+      </tr> -->
 
-      <!-- Add additional rows for the rest of the data -->
-    </tbody>
-  </table>
-  <style>
-    table {
+    <!-- Add additional rows for the rest of the data -->
+  </tbody>
+</table>
+<style>
+  table {
     border-collapse: collapse; /* remove the space between the cells */
     width: 100%; /* make the table take up the full width of its container */
   }
-  
-  th, td {
+
+  th,
+  td {
     border: 1px solid rgb(179, 179, 179); /* add a border to the cells */
     padding: 8px; /* add some padding to the cells */
     text-align: left; /* align the text inside the cells to the left */
   }
-  
+
   th {
     background-color: #b3b3b3; /* add a light gray background color to the headers */
     font-weight: bold; /* make the headers bold */
   }
-  
-  </style>
+</style>
 {% endblock content %}

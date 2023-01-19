@@ -27,20 +27,71 @@ def Profile(request):
 
 @login_required
 def AllCompanies(request):
-    return render(request, 'placement/AllCompanies.html')
+    companies_data = [{
+        'name': 'Google',
+        'category': 'IT',
+        'ctc': '10 LPA',
+        'stipend': '1 LPA',
+        'branches': 'CSE,ISE,ECE',
+        'btech': '8.5',
+        'sem': '8',
+        'profile': 'Software Engineer',
+        'location': 'Bangalore',
+        'date': '20/10/2020',
+        'lastdate': '20/10/2020',
+    },
+        {
+            'name': 'Microsoft',
+            'category': 'IT',
+            'ctc': '10 LPA',
+            'stipend': '1 LPA',
+            'branches': 'CSE,ISE,ECE',
+            'btech': '8.5',
+            'sem': '8',
+            'profile': 'Software Engineer',
+            'location': 'Bangalore',
+            'date': '20/10/2020',
+            'lastdate': '20/10/2020',
+    },
+        {
+        'name': 'Amazon',
+                'category': 'IT',
+                'ctc': '10 LPA',
+                'stipend': '1 LPA',
+                'branches': 'CSE,ISE,ECE',
+                'btech': '8.5',
+                'sem': '8',
+                'profile': 'Software Engineer',
+                'location': 'Bangalore',
+                'date': '20/10/2020',
+                'lastdate': '20/10/2020', }]
+    return render(request, 'placement/AllCompanies.html', {'companies': companies_data})
 
 
-@login_required
+@ login_required
 def RegisteredCompanies(request):
-    return render(request, 'placement/RegisteredCompanies.html')
+    companies_data = [{
+        'name': 'Google',
+        'category': 'IT',
+        'ctc': '10 LPA',
+        'stipend': '1 LPA',
+        'branches': 'CSE,ISE,ECE',
+        'btech': '8.5',
+        'sem': '8',
+        'profile': 'Software Engineer',
+        'location': 'Bangalore',
+        'date': '20/10/2020',
+        'lastdate': '20/10/2020',
+    }]
+    return render(request, 'placement/RegisteredCompanies.html', {'companies': companies_data})
 
 
-@login_required
+@ login_required
 def Dashboard(request):
     return render(request, 'placement/Dashboard.html')
 
 
-@login_required
+@ login_required
 def RegisterDeregister(request):
     return render(request, 'placement/Register-Deregister.html')
 
