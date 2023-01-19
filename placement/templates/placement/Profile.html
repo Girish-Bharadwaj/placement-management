@@ -2,7 +2,7 @@
 <div class="p-3">
   <div class="d-flex align-items-center justify-content-between mb-4">
     <h3>Your Profile</h3>
-    <a href="{% url 'edit-profile' %}" class="nav-link">
+    <a href="{% url 'edit-profile'  %}" class="nav-link">
       <button class="btn btn-primary px-3" style="height: 40px">
         Edit Profile
       </button>
@@ -16,15 +16,15 @@
           <table>
             <tr>
               <td class="left-detail">Roll Number :</td>
-              <td class="right-detail">123456789</td>
+              <td class="right-detail">{{user.profile.usn}}</td>
             </tr>
             <tr>
               <td class="left-detail">Name :</td>
-              <td class="right-detail">John Doe</td>
+              <td class="right-detail">{{user.username}}</td>
             </tr>
             <tr>
               <td class="left-detail">Branch :</td>
-              <td class="right-detail">Computer Science</td>
+              <td class="right-detail">{{user.profile.branch}}</td>
             </tr>
             <tr>
               <td class="left-detail">Year :</td>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
               <td class="left-detail">Backlogs :</td>
-              <td class="right-detail">0</td>
+              <td class="right-detail">{{user.profile.backlogs}}</td>
             </tr>
           </table>
         </div>
@@ -48,28 +48,32 @@
         <div class="row">
           <table>
             <tr>
-              <td class="left-detail">Roll Number :</td>
-              <td class="right-detail">123456789</td>
+              <td class="left-detail">Date of Birth :</td>
+              <td class="right-detail">{{user.profile.other_details.dob}}</td>
             </tr>
             <tr>
-              <td class="left-detail">Name :</td>
-              <td class="right-detail">John Doe</td>
+              <td class="left-detail">Father's name :</td>
+              <td class="right-detail">
+                {{user.profile.other_details.father_name}}
+              </td>
             </tr>
             <tr>
-              <td class="left-detail">Branch :</td>
-              <td class="right-detail">Computer Science</td>
+              <td class="left-detail">Mother's name :</td>
+              <td class="right-detail">
+                {{user.profile.other_details.mother_name}}
+              </td>
             </tr>
             <tr>
-              <td class="left-detail">Year :</td>
-              <td class="right-detail">3rd</td>
+              <td class="left-detail">Category :</td>
+              <td class="right-detail">
+                {{user.profile.other_details.category}}
+              </td>
             </tr>
             <tr>
-              <td class="left-detail">CGPA :</td>
-              <td class="right-detail">8.5</td>
-            </tr>
-            <tr>
-              <td class="left-detail">Backlogs :</td>
-              <td class="right-detail">0</td>
+              <td class="left-detail">Gender :</td>
+              <td class="right-detail">
+                {{user.profile.other_details.gender}}
+              </td>
             </tr>
           </table>
         </div>
@@ -84,35 +88,51 @@
           <table>
             <tr>
               <td class="left-detail">Semester 1 :</td>
-              <td class="right-detail">8.5</td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.first_sem_sgpa}}
+              </td>
             </tr>
             <tr>
               <td class="left-detail">Semester 2 :</td>
-              <td class="right-detail">8.5</td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.second_sem_sgpa}}
+              </td>
             </tr>
             <tr>
               <td class="left-detail">Semester 3 :</td>
-              <td class="right-detail">8.5</td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.third_sem_sgpa}}
+              </td>
             </tr>
             <tr>
               <td class="left-detail">Semester 4 :</td>
-              <td class="right-detail">8.5</td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.fourth_sem_sgpa}}
+              </td>
             </tr>
             <tr>
               <td class="left-detail">Semester 5 :</td>
-              <td class="right-detail">8.5</td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.fifth_sem_sgpa}}
+              </td>
             </tr>
             <tr>
               <td class="left-detail">Semester 6 :</td>
-              <td class="right-detail">8.5</td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.sixth_sem_sgpa}}
+              </td>
             </tr>
             <tr>
               <td class="left-detail">Semester 7 :</td>
-              <td class="right-detail"></td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.seventh_sem_sgpa}}
+              </td>
             </tr>
             <tr>
               <td class="left-detail">Semester 8 :</td>
-              <td class="right-detail"></td>
+              <td class="right-detail">
+                {{user.profile.current_edu_details.eighth_sem_sgpa}}
+              </td>
             </tr>
           </table>
         </div>
@@ -124,28 +144,34 @@
         <div class="row">
           <table>
             <tr>
-              <td class="left-detail">Roll Number :</td>
-              <td class="right-detail">123456789</td>
+              <td class="left-detail">10th Board :</td>
+              <td class="right-detail">
+                {{user.profile.past_edu_details.tenth_scheme}}
+              </td>
             </tr>
             <tr>
-              <td class="left-detail">Name :</td>
-              <td class="right-detail">John Doe</td>
+              <td class="left-detail">10th percentage :</td>
+              <td class="right-detail">
+                {{user.profile.past_edu_details.tenth_percentage}}
+              </td>
             </tr>
             <tr>
-              <td class="left-detail">Branch :</td>
-              <td class="right-detail">Computer Science</td>
+              <td class="left-detail">12th board :</td>
+              <td class="right-detail">
+                {{user.profile.past_edu_details.twelve_scheme}}
+              </td>
             </tr>
             <tr>
-              <td class="left-detail">Year :</td>
-              <td class="right-detail">3rd</td>
+              <td class="left-detail">12th percentage :</td>
+              <td class="right-detail">
+                {{user.profile.past_edu_details.twelve_percentage}}
+              </td>
             </tr>
             <tr>
-              <td class="left-detail">CGPA :</td>
-              <td class="right-detail">8.5</td>
-            </tr>
-            <tr>
-              <td class="left-detail">Backlogs :</td>
-              <td class="right-detail">0</td>
+              <td class="left-detail">CET Rank :</td>
+              <td class="right-detail">
+                {{user.profile.past_edu_details.cet_rank}}
+              </td>
             </tr>
           </table>
         </div>
