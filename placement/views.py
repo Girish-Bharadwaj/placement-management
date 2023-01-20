@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from users.models import Profile as profile, Other_Details as other_details
 from django.contrib.auth.models import User
+from placement.models import Company as company, registered_companies, placed_students
 from django import forms
 # Create your views here.
 
@@ -27,73 +28,57 @@ def Profile(request):
 
 @login_required
 def AllCompanies(request):
-    companies_data = [{
-        'name': 'Google',
-        'category': 'IT',
-        'ctc': '10 LPA',
-        'stipend': '1 LPA',
-        'branches': 'CSE,ISE,ECE',
-        'btech': '8.5',
-        'sem': '8',
-        'profile': 'Software Engineer',
-        'location': 'Bangalore',
-        'date': '20/10/2020',
-        'lastdate': '20/10/2020',
-    },
-        {
-            'name': 'Microsoft',
-            'category': 'IT',
-            'ctc': '10 LPA',
-            'stipend': '1 LPA',
-            'branches': 'CSE,ISE,ECE',
-            'btech': '8.5',
-            'sem': '8',
-            'profile': 'Software Engineer',
-            'location': 'Bangalore',
-            'date': '20/10/2020',
-            'lastdate': '20/10/2020',
-    },
-        {
-        'name': 'Amazon',
-                'category': 'IT',
-                'ctc': '10 LPA',
-                'stipend': '1 LPA',
-                'branches': 'CSE,ISE,ECE',
-                'btech': '8.5',
-                'sem': '8',
-                'profile': 'Software Engineer',
-                'location': 'Bangalore',
-                'date': '20/10/2020',
-                'lastdate': '20/10/2020', }]
+    companies_data = company.objects.all()
     return render(request, 'placement/AllCompanies.html', {'companies': companies_data})
 
 
 @ login_required
 def RegisteredCompanies(request):
-    companies_data = [{
-        'name': 'Google',
-        'category': 'IT',
-        'ctc': '10 LPA',
-        'stipend': '1 LPA',
-        'branches': 'CSE,ISE,ECE',
-        'btech': '8.5',
-        'sem': '8',
-        'profile': 'Software Engineer',
-        'location': 'Bangalore',
-        'date': '20/10/2020',
-        'lastdate': '20/10/2020',
-    }]
+    registered_companies_data = registered_companies.objects.filter(
+        student=request.user)
+    companies_data = []
+    for registered_company in registered_companies_data:
+        companies_data.append(registered_company.company)
+    # get all profiles from job profile for all companies
     return render(request, 'placement/RegisteredCompanies.html', {'companies': companies_data})
 
 
 @ login_required
 def Dashboard(request):
-    return render(request, 'placement/Dashboard.html')
+    # if student is placed from placed students
+    isPlaced = False
+    if placed_students.objects.filter(student=request.user).exists():
+        isPlaced = True
+
+    return render(request, 'placement/Dashboard.html', {'isPlaced': isPlaced, 'company_name': placed_students.objects.filter(student=request.user).first().company.name})
 
 
 @ login_required
 def RegisterDeregister(request):
-    return render(request, 'placement/Register-Deregister.html')
+    all_companies = company.objects.all()
+    registered_companies_data = registered_companies.objects.filter(
+        student=request.user).all()
+
+    if request.method == 'POST':
+        if 'register' in request.POST:
+            selected_value = request.POST.get('register_company')
+            selected_company = company.objects.filter(
+                name=selected_value).first()
+            # check if already registered
+            if registered_companies.objects.filter(company=selected_company, student=request.user).exists():
+                # deregister
+                print("deregister")
+            else:
+                registered_companies.objects.create(
+                    company=selected_company, student=request.user)
+        else:
+            selected_value = request.POST.get('deregister_company')
+            selected_company = company.objects.filter(
+                name=selected_value).first()
+            registered_companies.objects.filter(
+                company=selected_company, student=request.user).delete()
+
+    return render(request, 'placement/Register-Deregister.html', {'all_companies': all_companies, 'registered_companies': registered_companies_data})
 
 
 class EditProfile(LoginRequiredMixin, UpdateView):

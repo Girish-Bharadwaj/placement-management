@@ -1,29 +1,29 @@
-{% extends 'placement/base.html' %} 
-{% load static %}
-{% block link %}
-{% endblock %}
-{% block content %}
+{% extends 'placement/base.html' %} {% load static %} {% block content %}
 <body>
-    <h1 class="title">Welcome, <i>{{ user.username }}</i><small id = "dash">YOUR DASHBOARD</small></h1>
-    <div class="alert alert-success" role="alert">
-        Congratulations for getting placed in <a href="#" class="alert-link">company_name</a>!
-    </div>
+  <h1 class="title">
+    Welcome, <i>{{ user.username }}</i><small id="dash">YOUR DASHBOARD</small>
+  </h1>
+  <!-- if is placed then show -->
+  {% if isPlaced %}
+  <div class="alert alert-success" role="alert">
+    Congratulations for getting placed in
+    <a href="#" class="alert-link">{{company_name}}</a>!
+  </div>
+  {% endif %}
   <style>
-    #dash{
-        font-weight: 100;
-        font-size: 0.9rem;
-        margin-left: 1rem;
+    #dash {
+      font-weight: 100;
+      font-size: 0.9rem;
+      margin-left: 1rem;
     }
-    .title{
-        margin: 2rem auto;
-        margin-bottom: 4rem;
+    .title {
+      margin: 2rem auto;
+      margin-bottom: 4rem;
     }
-    .alert-success{
-        width: 50%;
+    .alert-success {
+      width: 50%;
     }
   </style>
-  
 </body>
-
 
 {% endblock content %}

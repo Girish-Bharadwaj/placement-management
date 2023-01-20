@@ -11,10 +11,9 @@
       <th>Branches</th>
       <th>BTech Criteria</th>
       <th>Sem Criteria</th>
-      <th>Profile</th>
       <th>Job Location</th>
-      <th>Date of Drive</th>
-      <th>Last Date</th>
+      <th>Date</th>
+      <th>Date of drive</th>
     </tr>
   </thead>
   <tbody>
@@ -26,12 +25,11 @@
       <td>{{ company.ctc }}</td>
       <td>{{ company.stipend }}</td>
       <td>{{ company.branches }}</td>
-      <td>{{ company.btech }}</td>
-      <td>{{ company.sem }}</td>
-      <td>{{ company.profile }}</td>
+      <td>{{ company.btech_criteria }}</td>
+      <td>{{ company.sem_criteria }}</td>
       <td>{{ company.location }}</td>
       <td>{{ company.date }}</td>
-      <td>{{ company.lastdate }}</td>
+      <td>{{ company.date_of_drive }}</td>
     </tr>
     {% endfor %}
   </tbody>
