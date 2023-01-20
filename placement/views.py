@@ -32,7 +32,7 @@ def AllCompanies(request):
     return render(request, 'placement/AllCompanies.html', {'companies': companies_data})
 
 
-@ login_required
+@login_required
 def RegisteredCompanies(request):
     registered_companies_data = registered_companies.objects.filter(
         student=request.user)
@@ -43,7 +43,7 @@ def RegisteredCompanies(request):
     return render(request, 'placement/RegisteredCompanies.html', {'companies': companies_data})
 
 
-@ login_required
+@login_required
 def Dashboard(request):
     # if student is placed from placed students
     isPlaced = False
@@ -53,7 +53,7 @@ def Dashboard(request):
     return render(request, 'placement/Dashboard.html', {'isPlaced': isPlaced, 'company_name': placed_students.objects.filter(student=request.user).first().company.name})
 
 
-@ login_required
+@login_required
 def RegisterDeregister(request):
     all_companies = company.objects.all()
     registered_companies_data = registered_companies.objects.filter(
