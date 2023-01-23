@@ -113,6 +113,41 @@
             ">
               <a class="nav-link" href="{% url 'job-profile' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Job Profile</a>
             </li>
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'create-user' or request.resolver_match.url_name == 'create-user' %} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'create-user' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Create User</a>
+            </li>
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'create-profile' or request.resolver_match.url_name == 'create-profile' %} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'create-profile' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Create Profile</a>
+            </li>
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'add-other-details' or request.resolver_match.url_name == 'add-other-details' %} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'add-other-details' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Other Details</a>
+            </li>
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'add-current-education-details' or request.resolver_match.url_name == 'add-current-education-details' %} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'add-current-education-details' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Current Education Details</a>
+            </li>
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'add-past-education-details' or request.resolver_match.url_name == 'add-past-education-details' %} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'add-past-education-details' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Past Education Details</a>
+            </li>
             {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">&#160;<i class="fa-solid fa-arrow-right-from-bracket"></i>&#160;&#160;LOGOUT</a>

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from users.models import Profile as profile, Other_Details as other_details
+from users.models import Profile as profile, Other_Details as other_details, Current_Education_Details, Past_Education_Details
 from django.contrib.auth.models import User
 from placement.models import Company as company, registered_companies, placed_students, job_profile
 from django import forms
@@ -27,7 +27,19 @@ def About(request):
 
 @login_required
 def Profile(request):
-    return render(request, 'placement/profile.html')
+    current_profile = profile.objects.filter(user=request.user).first()
+    current_other_details = other_details.objects.filter(
+        profile=current_profile).first()
+    current_edu_details = Current_Education_Details.objects.filter(
+        profile=current_profile).first()
+    past_edu_details = Past_Education_Details.objects.filter(
+        profile=current_profile).first()
+    return render(request, 'placement/profile.html', {
+        'profile': current_profile,
+        'other_details': current_other_details,
+        'current_edu_details': current_edu_details,
+        'past_edu_details': past_edu_details
+    })
 
 
 @login_required
@@ -152,8 +164,8 @@ class EditProfile(LoginRequiredMixin, UpdateView):
             return self.form_invalid(form)
 
     def get_object(self, queryset=None):
-        obj = other_details.objects.filter(id=profile.objects.filter(
-            user=self.request.user).first().other_details.id).first()
+        obj = other_details.objects.filter(
+            profile=self.request.user.profile).first()
         return obj
 
 
@@ -194,3 +206,125 @@ class AddJobProfile(LoginRequiredMixin, CreateView):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
+class CreateUser(LoginRequiredMixin, CreateView):
+    model = User
+    template_name = 'placement/CreateUser.html'
+    success_url = '/create-profile'
+    fields = ['username', 'password']
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save(commit=False)
+            self.object.save()
+            if 'add-another' in request.POST:
+                self.success_url = '/job-profile'
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['heading'] = 'Create User'
+        context['postUrl'] = 'create-user'
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
+class CreateProfile(LoginRequiredMixin, CreateView):
+    model = profile
+    template_name = 'placement/CreateUser.html'
+    success_url = '/add-other-details'
+    fields = '__all__'
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save(commit=False)
+            self.object.save()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['heading'] = 'Create Profile'
+        context['postUrl'] = 'create-profile'
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
+class AddOtherDetails(LoginRequiredMixin, CreateView):
+    model = other_details
+    template_name = 'placement/CreateUser.html'
+    success_url = '/add-current-education-details'
+    fields = '__all__'
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save(commit=False)
+            self.object.save()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['heading'] = 'Add Other Details'
+        context['postUrl'] = 'add-other-details'
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
+class AddCurrentEducationDetails(LoginRequiredMixin, CreateView):
+    model = Current_Education_Details
+    template_name = 'placement/CreateUser.html'
+    success_url = '/add-past-education-details'
+    fields = '__all__'
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save(commit=False)
+            self.object.save()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['heading'] = 'Add Current Education Details'
+        context['postUrl'] = 'add-current-education-details'
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
+class AddPastEducationDetails(LoginRequiredMixin, CreateView):
+    model = Past_Education_Details
+    template_name = 'placement/CreateUser.html'
+    success_url = '/'
+    fields = '__all__'
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save(commit=False)
+            self.object.save()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['heading'] = 'Add Past Education Details'
+        context['postUrl'] = 'add-past-education-details'
+        return context

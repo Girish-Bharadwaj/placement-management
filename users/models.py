@@ -10,18 +10,13 @@ class Profile(models.Model):
     phoneNo = models.CharField(max_length=10)
     backlogs = models.IntegerField(default=0)
     branch = models.CharField(max_length=100)
-    past_edu_details = models.ForeignKey(
-        'Past_Education_Details', on_delete=models.CASCADE, null=True, blank=True)
-    current_edu_details = models.ForeignKey(
-        'Current_Education_Details', on_delete=models.CASCADE, null=True, blank=True)
-    other_details = models.ForeignKey(
-        'Other_Details', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
 
 
 class Past_Education_Details(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     tenth_scheme = models.CharField(max_length=100)
     twelve_scheme = models.CharField(max_length=100)
     cet_rank = models.CharField(max_length=100)
@@ -30,6 +25,7 @@ class Past_Education_Details(models.Model):
 
 
 class Current_Education_Details(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     first_sem_sgpa = models.FloatField(blank=True, null=True)
     second_sem_sgpa = models.FloatField(blank=True, null=True)
     third_sem_sgpa = models.FloatField(blank=True, null=True)
@@ -41,6 +37,7 @@ class Current_Education_Details(models.Model):
 
 
 class Other_Details(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     address = models.CharField(max_length=300)
     dob = models.DateField()
     father_name = models.CharField(max_length=100)

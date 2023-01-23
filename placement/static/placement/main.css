@@ -4,7 +4,7 @@
 }
 
 .navbar {
-  background: linear-gradient(45deg, #16222A, #3A6073) !important;
+  background: linear-gradient(45deg, #16222a, #3a6073) !important;
   height: 10vh;
   position: fixed;
   top: 0;
@@ -20,10 +20,31 @@
 .sidebar {
   width: 20%;
   height: 90vh;
+  overflow-y: scroll;
   margin-top: 10vh;
   position: fixed;
   padding: 0px;
-  background: linear-gradient(180deg, #16222A, #3A6073) !important
+  background: linear-gradient(180deg, #16222a, #3a6073) !important;
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+}
+.sidebar::-moz-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: #c4c4c4 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #16222a, #3a6073) !important;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border: 3px solid linear-gradient(180deg, #16222a, #3a6073) !important;
 }
 
 .sidebar a {
