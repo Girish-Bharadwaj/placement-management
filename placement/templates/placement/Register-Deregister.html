@@ -28,8 +28,8 @@
           {% csrf_token %}
           <select name="register_company" class="dropdown">
             {% for company in all_companies %}
-            <option class="dropdown-item" value="{{company.name}}">
-              {{ company.name }}
+            <option class="dropdown-item" value="{{company.value}}">
+              {{ company.display }}
             </option>
             {% endfor %}
           </select>
@@ -51,8 +51,8 @@
           {% csrf_token %}
           <select name="deregister_company" class="dropdown">
             {% for company in registered_companies %}
-            <option class="dropdown-item" value="{{company}}">
-              {{ company }}
+            <option class="dropdown-item" value="{{company.value}}">
+              {{ company.display }}
             </option>
             {% endfor %}
           </select>
