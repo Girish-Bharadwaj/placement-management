@@ -2,13 +2,22 @@
 {% block content %}
 <div class="p-3">
   <div class="d-flex align-items-center justify-content-between mb-4">
-    <h3>Add Company</h3>
+    <h3>Add Profile</h3>
   </div>
   <div class="card">
     <div class="card-body">
-      <form method="post" action="{% url 'add-company' %}">
+      <form method="post" action="{% url 'job-profile' %}">
         {% csrf_token %}
         <fieldset class="form-group">{{ form | crispy }}</fieldset>
+        <button
+          type="submit"
+          value="Update"
+          class="btn btn-primary px-3 my-4"
+          style="height: 40px"
+          name="add-another"
+        >
+          Save and add another
+        </button>
         <button
           type="submit"
           value="Update"

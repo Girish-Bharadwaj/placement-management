@@ -98,6 +98,22 @@
             ">
               <a class="nav-link" href="{% url 'profile' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;PROFILE</a>
             </li>
+            {% if user.is_superuser %}
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'add-company' or request.resolver_match.url_name == 'add-company'%} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'add-company' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Company</a>
+            </li>
+            <li class="nav-item 
+            {% if request.resolver_match.url_name == 'job-profile' or request.resolver_match.url_name == 'job-profile' %} 
+              selected
+            {% endif %}
+            ">
+              <a class="nav-link" href="{% url 'job-profile' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Job Profile</a>
+            </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">&#160;<i class="fa-solid fa-arrow-right-from-bracket"></i>&#160;&#160;LOGOUT</a>
             </li>

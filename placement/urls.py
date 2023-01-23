@@ -13,4 +13,6 @@ urlpatterns = [
          views.EditProfile.as_view(), name='edit-profile'),
     path('add-company/',
          views.AddCompany.as_view(), name='add-company'),
+    path('job-profile/',
+         views.AddJobProfile.as_view(), name='job-profile'),
 ]

@@ -163,7 +163,7 @@ class EditProfile(LoginRequiredMixin, UpdateView):
 class AddCompany(LoginRequiredMixin, CreateView):
     model = company
     template_name = 'placement/CompanyForm.html'
-    success_url = '/all-companies'
+    success_url = '/job-profile'
     fields = '__all__'
 
     def post(self, request, *args, **kwargs):
@@ -171,6 +171,26 @@ class AddCompany(LoginRequiredMixin, CreateView):
         if form.is_valid():
             self.object = form.save(commit=False)
             self.object.save()
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(lambda u: u.is_superuser), name='dispatch')
+class AddJobProfile(LoginRequiredMixin, CreateView):
+    model = job_profile
+    template_name = 'placement/JobProfile.html'
+    success_url = '/allcompanies'
+    fields = '__all__'
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            self.object = form.save(commit=False)
+            self.object.save()
+            if 'add-another' in request.POST:
+                self.success_url = '/job-profile'
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
