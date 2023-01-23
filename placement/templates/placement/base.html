@@ -12,6 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{% static 'placement/main.css' %}" />
+    <script src="https://kit.fontawesome.com/682248fe07.js" crossorigin="anonymous"></script>
     {% block link %}
     {% endblock %}
   </head>
@@ -65,38 +66,40 @@
             {% if request.resolver_match.url_name == 'dashboard' %} 
             selected
             {% endif %}" 
-            href="{% url 'dashboard' %}">DASHBOARD</a>
+            href="{% url 'dashboard' %}">&#160;<i class="fa-solid fa-bullhorn"></i>&#160;	
+            &#160;DASHBOARD</a>
             </li>
             <li class="nav-item">
               <a class="nav-link 
               {% if request.resolver_match.url_name == 'allcompanies' %} 
               selected
               {% endif %}" 
-              href="{% url 'allcompanies' %}">ALL COMPANIES</a>
+              href="{% url 'allcompanies' %}">&#160;<i class="fa-solid fa-table-list"></i>	
+              &#160;&#160;ALL COMPANIES</a>
             </li>
             <li class="nav-item">
               <a class="nav-link
               {% if request.resolver_match.url_name == 'registeredcompanies' %} 
               selected
               {% endif %}" 
-              href="{% url 'registeredcompanies' %}">REGISTERED COMPANIES</a>
+              href="{% url 'registeredcompanies' %}">&#160;<i class="fa-solid fa-file-pen"></i>&#160;&#160;REGISTERED COMPANIES</a>
             </li>
             <li class="nav-item">
               <a class="nav-link
               {% if request.resolver_match.url_name == 'register-deregister' %} 
               selected
               {% endif %}" 
-              href="{% url 'register-deregister' %}">REGISTER/DEREGISTER</a>
+              href="{% url 'register-deregister' %}">&#160;<i class="fa-regular fa-flag"></i>&#160;&#160;REGISTER / DEREGISTER</a>
             </li>
             <li class="nav-item 
             {% if request.resolver_match.url_name == 'profile' or request.resolver_match.url_name == 'edit-profile'%} 
               selected
             {% endif %}
             ">
-              <a class="nav-link" href="{% url 'profile' %}">PROFILE</a>
+              <a class="nav-link" href="{% url 'profile' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;PROFILE</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+              <a class="nav-link" href="{% url 'logout' %}">&#160;<i class="fa-solid fa-arrow-right-from-bracket"></i>&#160;&#160;LOGOUT</a>
             </li>
           </ul>
         </div>

@@ -56,11 +56,12 @@ def RegisteredCompanies(request):
 @login_required
 def Dashboard(request):
     # if student is placed from placed students
-    isPlaced = False
-    if placed_students.objects.filter(student=request.user).exists():
-        isPlaced = True
+    # isPlaced = False
+    # if placed_students.objects.filter(student=request.user).exists():
+    #     isPlaced = True
 
-    return render(request, 'placement/Dashboard.html', {'isPlaced': isPlaced})
+    # return render(request, 'placement/Dashboard.html', {'isPlaced': isPlaced, 'company_name': placed_students.objects.filter(student=request.user).first().company.name})
+    return render(request, 'placement/Dashboard.html')
 
 
 @login_required

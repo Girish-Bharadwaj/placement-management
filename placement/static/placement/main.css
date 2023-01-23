@@ -4,7 +4,7 @@
 }
 
 .navbar {
-  background-color: #3c8dbc !important;
+  background: linear-gradient(45deg, #16222A, #3A6073) !important;
   height: 10vh;
   position: fixed;
   top: 0;
@@ -23,8 +23,9 @@
   margin-top: 10vh;
   position: fixed;
   padding: 0px;
-  background-color: #1e282c !important;
+  background: linear-gradient(180deg, #16222A, #3A6073) !important
 }
+
 .sidebar a {
   font-size: 15px;
   letter-spacing: 0.5px;
