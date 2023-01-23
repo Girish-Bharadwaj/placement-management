@@ -1,7 +1,7 @@
 {% extends 'placement/base.html' %} {% block content %}
 <div class="p-3">
   <div class="d-flex align-items-center justify-content-between mb-4">
-    <h3>Your Profile</h3>
+    <h3>View Your Profile</h3>
     <a href="{% url 'edit-profile'  %}" class="nav-link">
       <button class="btn btn-primary px-3" style="height: 40px">
         Edit Profile
@@ -11,11 +11,11 @@
   <div style="display: flex; justify-content: space-between">
     <div class="card mr-2 mb-2" style="width: 30rem">
       <div class="card-body">
-        <h5 class="card-title">My Details</h5>
+        <h5 class="card-title">Personal Details</h5>
         <div class="row">
           <table>
             <tr>
-              <td class="left-detail">Roll Number :</td>
+              <td class="left-detail">USN :</td>
               <td class="right-detail">{{user.profile.usn}}</td>
             </tr>
             <tr>
