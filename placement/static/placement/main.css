@@ -18,7 +18,14 @@
   color: white;
   font-weight: bolder;
 }
-
+#smol{
+  font-size: 0.85rem;
+  margin: 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  color: white;
+  letter-spacing: 0.2rem;
+}
 .sidebar {
   width: 20%;
   height: 90vh;
@@ -37,7 +44,7 @@
 
 /* Chrome, Edge, and Safari */
 .sidebar::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
 }
 
 .sidebar::-webkit-scrollbar-track {
@@ -46,7 +53,7 @@
 
 .sidebar::-webkit-scrollbar-thumb {
   background-color: #c4c4c4;
-  border: 3px solid linear-gradient(180deg, #16222a, #3a6073) !important;
+  border: 10px solid linear-gradient(180deg, #16222a, #3a6073) !important;
 }
 
 .sidebar a {
@@ -57,7 +64,7 @@
   text-decoration: none;
   color: #eef4ed;
   transition: 0.3s;
-
+  text-transform: uppercase;
 }
 .sidebar a:hover {
   transition: 0.3s;
@@ -84,6 +91,7 @@
   color: white;
   border: 1px solid white;  
   transition: 0.4s;
+  text-transform: uppercase;
 }
 .nav-item button:hover{
   transition: 0.4s;
@@ -94,7 +102,9 @@
   font-weight: 600;
   padding-right: 15px;
   width: 30%;
+  text-transform: uppercase;
 }
+
 .right-detail {
   width: 50%;
   text-align: left;

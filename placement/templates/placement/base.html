@@ -62,6 +62,7 @@
         <div class="col-2 bg-body-secondary sidebar">
           <ul class="nav flex-column">
             <li class="nav-item">
+              <h5 id="smol">USER PANEL</h5>
             <a class="nav-link 
             {% if request.resolver_match.url_name == 'dashboard' %} 
             selected
@@ -98,6 +99,7 @@
             ">
               <a class="nav-link" href="{% url 'profile' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;&#160;PROFILE</a>
             </li>
+            <h5 id="smol">ADMIN PANEL</h5>
             {% if user.is_superuser %}
             <li class="nav-item 
             {% if request.resolver_match.url_name == 'add-company' or request.resolver_match.url_name == 'add-company'%} 
@@ -111,14 +113,14 @@
               selected
             {% endif %}
             ">
-              <a class="nav-link" href="{% url 'job-profile' %}">&#160;<i class="fa-solid fa-user-plus"></i>&#160;&#160;&#160;ADD JOB PROFILE</a>
+              <a class="nav-link" href="{% url 'job-profile' %}">&#160;<i class="fa-solid fa-user-plus"></i>&#160;&#160;ADD JOB PROFILE</a>
             </li>
             <li class="nav-item 
             {% if request.resolver_match.url_name == 'create-user' or request.resolver_match.url_name == 'create-user' %} 
               selected
             {% endif %}
             ">
-              <a class="nav-link" href="{% url 'create-user' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Create User</a>
+              <a class="nav-link" href="{% url 'create-user' %}">&#160;<i class="fa-solid fa-users"></i>&#160;&#160;Create User</a>
             </li>
             <li class="nav-item 
             {% if request.resolver_match.url_name == 'create-profile' or request.resolver_match.url_name == 'create-profile' %} 
@@ -132,21 +134,21 @@
               selected
             {% endif %}
             ">
-              <a class="nav-link" href="{% url 'add-other-details' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Other Details</a>
+              <a class="nav-link" href="{% url 'add-other-details' %}">&#160;<i class="fa-regular fa-square-plus"></i>&#160;&#160;Add Other Details</a>
             </li>
             <li class="nav-item 
             {% if request.resolver_match.url_name == 'add-current-education-details' or request.resolver_match.url_name == 'add-current-education-details' %} 
               selected
             {% endif %}
             ">
-              <a class="nav-link" href="{% url 'add-current-education-details' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Current Education Details</a>
+              <a class="nav-link" href="{% url 'add-current-education-details' %}">&#160;<i class="fa-solid fa-graduation-cap"></i>&#160;&#160;Add Current Education Details</a>
             </li>
             <li class="nav-item 
             {% if request.resolver_match.url_name == 'add-past-education-details' or request.resolver_match.url_name == 'add-past-education-details' %} 
               selected
             {% endif %}
             ">
-              <a class="nav-link" href="{% url 'add-past-education-details' %}">&#160;<i class="fa-regular fa-user"></i>&#160;&#160;Add Past Education Details</a>
+              <a class="nav-link" href="{% url 'add-past-education-details' %}">&#160;<i class="fa-solid fa-school"></i>&#160;&#160;Add Past Education Details</a>
             </li>
             {% endif %}
             <li class="nav-item">
