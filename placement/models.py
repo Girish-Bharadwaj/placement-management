@@ -22,7 +22,7 @@ class Company(models.Model):
 
 class job_profile(models.Model):
     job_profile = models.CharField(max_length=50)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE,blank=True,null=True)
 
     def __str__(self):
         return self.job_profile
