@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-z2b(y%37v5**mfxm!q*^zuj935!q-+c(o3nfk)n-j1i-mafetd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'placement_management',
-        'USER':'postgres',
-        'PASSWORD':'password',
-        'HOST':'localhost',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
     }
 }
 
@@ -128,4 +128,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL='login'
+LOGIN_URL = 'login'
