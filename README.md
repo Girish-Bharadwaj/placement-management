@@ -10,3 +10,12 @@ This project is a web application developed using Django and Postgres SQL. The P
 ### Students
 - Login and register for multiple job roles offered by the same company
 - Deregister from previously registered job roles
+
+# Screenshots
+## Login
+![Image](/screenshots/1.jpeg)
+## Admin
+![Image](/screenshots/2.jpeg)
+## User
+![Image](/screenshots/3.jpeg)
+![Image](/screenshots/4.jpeg)
